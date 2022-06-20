@@ -6,7 +6,7 @@ module.exports.getMeteo =  function (city){
     //on récupére les coordonnées de la ville 
     
 coord.getCoord(city).then(async (coord) => {
-    if ((coord.lat>0) && (coord.lon>0))
+    if ((coord.lat!=0) && (coord.lon!=0))
     {
     const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=metric&lang=fr`); 
     console.log("Ville : " + res.data.name + " Meteo :" + res.data.weather[0].description + " Température actuelle : " + res.data.main.temp + "° Minimale : " + res.data.main.temp_min + " Maximale :" + res.data.main.temp_max + "°" )
